@@ -76,5 +76,13 @@ namespace ISBN {
         {
             return ISBN.Replace("-","").Replace(" ","");
         }
+        public bool validateCheckSum10(string ISBN)
+    
+        {
+            if (ISBN == "")
+                return false;
+            return calcCheckSum10(ISBN) == Char.ToString(ISBN[ISBN.Length - 1]);
+
+        }
     }
 }

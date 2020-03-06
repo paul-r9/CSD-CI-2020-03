@@ -84,6 +84,16 @@ namespace ISBN {
             Assert.Equal("043942089X", actual);
         }
 
+        [Fact]
+        public void ISBN_ValidateChecksum10WithX()
+        {
+            string ISBN = "043942089X";
+
+            ISBNFinder sut = new ISBNFinder();
+            bool actual = sut.validateCheckSum10(ISBN);
+
+            Assert.True(actual);
+        }
     }
 
 }
