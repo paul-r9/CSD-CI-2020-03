@@ -47,7 +47,31 @@ namespace ISBN {
             BookInfo expected = new BookInfo("Test Driven Development by Example", "Kent Beck", "0321146530", "9780321146533");
             Assert.Equal(expected.ToString(), actual.ToString());
         }
-        
+
+        [Fact]
+        public void ISBN_CheckSumISBN10()
+        {
+            string ISBN = "0201485672";
+
+            ISBNFinder sut = new ISBNFinder();
+            string actual = sut.calcCheckSum10(ISBN);
+
+
+            Assert.Equal("2", actual.ToString());
+        }
+
+        [Fact]
+        public void ISBN_CheckSumISBN10WithX()
+        {
+            string ISBN = "043942089X";
+
+            ISBNFinder sut = new ISBNFinder();
+            string actual = sut.calcCheckSum10(ISBN);
+
+
+            Assert.Equal("X", actual.ToString());
+        }
+
     }
 
 }

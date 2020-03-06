@@ -1,4 +1,5 @@
 using BookInfoProvider;
+using System;
 
 namespace ISBN {
     public class ISBNFinder {
@@ -25,6 +26,18 @@ namespace ISBN {
             }
             
             return bookInfo;
+        }
+
+        public string calcCheckSum10(string isbn) {
+            int csDigit = 0;
+            for(int i=0; i < isbn.Length-1 && i < 9; i++)
+            {
+                csDigit += ((int)Char.GetNumericValue(isbn[i])*(i+1));
+            }
+            csDigit = csDigit % 11;
+            if (csDigit == 10)
+                return "X";
+            return "" + csDigit;
         }
     }
 }
