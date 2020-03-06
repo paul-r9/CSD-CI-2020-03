@@ -46,6 +46,17 @@ namespace ISBN {
             return result == (int)Char.GetNumericValue(isbn[isbn.Length - 1]);
         }
 
+        public bool ValidInputLength(string isbn)
+        {
+            if (isbn.Length == 13 || isbn.Length == 10)
+                return true;
+            else
+                return false;
+
+        }
+        
+
+
         private  int CalculateCheckSum13(string isbn)
         {
             int result = 0;
