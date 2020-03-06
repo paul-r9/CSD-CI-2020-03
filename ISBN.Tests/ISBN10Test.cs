@@ -72,6 +72,18 @@ namespace ISBN {
             Assert.Equal("X", actual.ToString());
         }
 
+        [Fact]
+        public void ISBN_StripDashesAndSpaces()
+        {
+            string ISBN = "04 -3942-089-X";
+
+            ISBNFinder sut = new ISBNFinder();
+            string actual = sut.stripDashAndSpace(ISBN);
+
+
+            Assert.Equal("043942089X", actual);
+        }
+
     }
 
 }

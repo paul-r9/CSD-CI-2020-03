@@ -71,5 +71,10 @@ namespace ISBN {
         {
             return value % 2 == 0;
         }
+
+        public string stripDashAndSpace(string ISBN)
+        {
+            return ISBN.Replace("-","").Replace(" ","");
+        }
     }
 }
