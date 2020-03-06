@@ -47,11 +47,6 @@ namespace ISBN {
             BookInfo expected = new BookInfo("Test Driven Development by Example", "Kent Beck", "0321146530", "9780321146533");
             Assert.Equal(expected.ToString(), actual.ToString());
         }
-
-        [Fact]
-        public void ThisTestShouldBreakTheBuild() {
-            Assert.True(false, "Did you know xUnit does not have an Asset.Fail operation?");
-        }
         
     }
 
