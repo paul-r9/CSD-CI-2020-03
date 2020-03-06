@@ -30,14 +30,46 @@ namespace ISBN {
 
         public string calcCheckSum10(string isbn) {
             int csDigit = 0;
-            for(int i=0; i < isbn.Length-1 && i < 9; i++)
+            for (int i = 0; i < isbn.Length - 1 && i < 9; i++)
             {
-                csDigit += ((int)Char.GetNumericValue(isbn[i])*(i+1));
+                csDigit += ((int)Char.GetNumericValue(isbn[i]) * (i + 1));
             }
             csDigit = csDigit % 11;
             if (csDigit == 10)
                 return "X";
             return "" + csDigit;
+        }
+
+        public bool calcCheckSum13(string isbn)
+        {
+            int result = CalculateCheckSum13(isbn);
+            return result == (int)Char.GetNumericValue(isbn[isbn.Length - 1]);
+        }
+
+        private  int CalculateCheckSum13(string isbn)
+        {
+            int result = 0;
+            int sum = 0;
+            for (int i = 0; i < isbn.Length-1; i++)
+            {
+                if (IsEven(i))
+                {
+                    sum += (int)Char.GetNumericValue(isbn[i]);
+                    
+                }
+                else
+                {
+                    sum += (int)Char.GetNumericValue(isbn[i]) * 3;
+                }
+            }
+            result = sum % 10;
+            result = 10 - result;
+            return result;
+        }
+
+        private static bool IsEven(int value)
+        {
+            return value % 2 == 0;
         }
     }
 }
